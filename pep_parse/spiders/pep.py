@@ -4,12 +4,13 @@ from pep_parse.items import PepParseItem
 
 
 class PepSpider(scrapy.Spider):
-    """Парсер ссылок на страницы Pep."""
+
     name = 'pep'
     allowed_domains = ['peps.python.org']
     start_urls = ['https://peps.python.org/']
 
     def parse(self, response):
+        """Парсер ссылок на страницы Pep."""
         tbody = response.css('tbody')
 
         for tr in tbody.css('tr'):
